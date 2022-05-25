@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 function App() {
-  return <h1>Tabuada da Flavinha</h1>;
+  return <button>Tabuada da Flavinha</button>;
 }
 
 export default App;
