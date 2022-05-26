@@ -1,3 +1,4 @@
+import { CheckCircle } from 'phosphor-react';
 import { useState } from 'react';
 
 interface ItemTabuada {
@@ -6,7 +7,7 @@ interface ItemTabuada {
   result: number;
 }
 
-function Question() {
+export function Question() {
   const itensTabuada: ItemTabuada[] = [];
   for (let value1 = 2; value1 <= 9; value1++) {
     for (let value2 = 1; value2 <= 10; value2++) {
@@ -19,19 +20,18 @@ function Question() {
 
   return (
     <div className="flex gap-2">
-      <span className="px-2 h-10 rounded bg-cyan-700 text-slate-300">
-        {itensTabuada[15].value1}
+      <span className="px-4 h-10 bg-zinc-600 text-zinc-100">
+        {itensTabuada[63].value1}
       </span>
-      <span className="px-2 h-10 rounded text-cyan-700">x</span>
-      <span className="px-2 h-10 rounded bg-cyan-700 text-slate-300">
-        {itensTabuada[15].value2}
+      <span className="px-4 h-10 text-zinc-600">x</span>
+      <span className="px-4 h-10 bg-zinc-600 text-zinc-100">
+        {itensTabuada[63].value2}
       </span>
-      <span className="px-2 h-10 text-cyan-700">=</span>
-      <span className="px-2 h-10 bg-cyan-700 text-slate-300">
-        {itensTabuada[15].result}
+      <span className="px-4 h-10 text-zinc-600">=</span>
+      <span className="px-4 h-10 bg-zinc-800 text-zinc-100 flex">
+        <CheckCircle />
+        {itensTabuada[63].result}
       </span>
     </div>
   );
 }
-
-export default Question;
