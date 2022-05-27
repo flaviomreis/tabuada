@@ -19,19 +19,25 @@ export function App() {
   }
 
   const [tabuada, setTabuada] = useState(itensTabuada);
-  const [questionNumber, setQuestionNumber] = useState(Math.floor(Math.random() * itensTabuada.length + 1));
+  const [questionNumber, setQuestionNumber] = useState(Math.floor(Math.random() * tabuada.length + 1));
+  const [lastQuestion, setLastQuestion] = useState<ItemTabuada | null>(null);
 
   function verifyAnswer(answer: number) {
     console.log(answer)
-    if (answer === itensTabuada[questionNumber].result) {
+    if (answer === tabuada[questionNumber].result) {
+      setLastQuestion(tabuada[questionNumber]);
+      //setTabuada(tabuada.splice(questionNumber, 1));
+      //console.log(tabuada);
+      setQuestionNumber(Math.floor(Math.random() * tabuada.length + 1))
     }
   }
 
   return (
     <div className="flex flex-col items-center">
       <Title />
-      <Question question={itensTabuada[questionNumber]} />
+      <Question question={tabuada[questionNumber]} mainQuestion={true}/>
       <NumberPad verifyAnswer={verifyAnswer}/>
+      { lastQuestion !== null && <Question question={lastQuestion}  mainQuestion={false}/> }
     </div>
   );
 }
