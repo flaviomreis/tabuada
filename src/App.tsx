@@ -17,17 +17,21 @@ export function App() {
       itensTabuada.push({ value1, value2, result: value1 * value2 });
     }
   }
-  console.log(itensTabuada);
-
-  let questionNumber = Math.floor(Math.random() * itensTabuada.length + 1);
 
   const [tabuada, setTabuada] = useState(itensTabuada);
+  const [questionNumber, setQuestionNumber] = useState(Math.floor(Math.random() * itensTabuada.length + 1));
+
+  function verifyAnswer(answer: number) {
+    console.log(answer)
+    if (answer === itensTabuada[questionNumber].result) {
+    }
+  }
 
   return (
     <div className="flex flex-col items-center">
       <Title />
-      <Question question={itensTabuada[questionNumber]}/>
-      <NumberPad />
+      <Question question={itensTabuada[questionNumber]} />
+      <NumberPad verifyAnswer={verifyAnswer}/>
     </div>
   );
 }

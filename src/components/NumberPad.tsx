@@ -1,7 +1,11 @@
 import { ArrowElbowDownRight, Backspace, CheckCircle } from 'phosphor-react';
 import { useState } from 'react';
 
-export function NumberPad() {
+interface NumberPadProps {
+  verifyAnswer: (answer: number) => void;
+}
+
+export function NumberPad( { verifyAnswer }: NumberPadProps) {
   const [result, setResult] = useState('');
 
   function addResultNumber(value: string) {
@@ -16,6 +20,11 @@ export function NumberPad() {
     if (result.length > 0) {
       setResult(result.substring(0, result.length - 1));
     }
+  }
+
+  function onSendAnswer() {
+    verifyAnswer(parseInt(result));
+    setResult('');
   }
 
   return (
@@ -65,7 +74,7 @@ export function NumberPad() {
           <Backspace size={20} />
         </button>
       </div>
-      <button className="bg-amber-500 w-60 h-10 rounded-full hover:bg-amber-600 transition-colors flex justify-center items-center gap-4">
+      <button onClick={onSendAnswer} className="bg-amber-500 w-60 h-10 rounded-full hover:bg-amber-600 transition-colors flex justify-center items-center gap-4">
         <ArrowElbowDownRight />
         Enviar Resposta
       </button>
