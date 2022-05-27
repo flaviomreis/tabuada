@@ -1,4 +1,4 @@
-import { CheckCircle } from 'phosphor-react';
+import { CheckCircle, CircleDashed } from 'phosphor-react';
 import { useState } from 'react';
 
 interface ItemTabuada {
@@ -19,19 +19,11 @@ export function Question() {
   const [tabuada, setTabuada] = useState(itensTabuada);
 
   return (
-    <div className="flex gap-2">
-      <span className="px-4 h-10 bg-zinc-600 text-zinc-100">
-        {itensTabuada[63].value1}
-      </span>
-      <span className="px-4 h-10 text-zinc-600">x</span>
-      <span className="px-4 h-10 bg-zinc-600 text-zinc-100">
-        {itensTabuada[63].value2}
-      </span>
-      <span className="px-4 h-10 text-zinc-600">=</span>
-      <span className="px-4 h-10 bg-zinc-800 text-zinc-100 flex">
-        <CheckCircle />
-        {itensTabuada[63].result}
-      </span>
+    <div className="flex w-60 h-10 gap-4 justify-center items-center my-4">
+      <div className="text-black text-3xl">{itensTabuada[63].value1}</div>
+      <div className="text-red-600">x</div>
+      <div className="text-black text-3xl">{itensTabuada[63].value2}</div>
+      <div className="text-blue-600">=</div>
     </div>
   );
 }
