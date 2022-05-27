@@ -13,7 +13,7 @@ export function App() {
   const itensTabuada: ItemTabuada[] = [];
 
   for (let value1 = 2; value1 <= 9; value1++) {
-    for (let value2 = 1; value2 <= 10; value2++) {
+    for (let value2 = 2; value2 <= 10; value2++) {
       itensTabuada.push({ value1, value2, result: value1 * value2 });
     }
   }
