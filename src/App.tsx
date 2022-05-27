@@ -23,7 +23,6 @@ export function App() {
   const [lastQuestion, setLastQuestion] = useState<ItemTabuada | null>(null);
 
   function verifyAnswer(answer: number) {
-    console.log(answer)
     if (answer === tabuada[questionNumber].result) {
       setLastQuestion(tabuada[questionNumber]);
       //setTabuada(tabuada.splice(questionNumber, 1));
