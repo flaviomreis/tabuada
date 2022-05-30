@@ -24,7 +24,14 @@ export function App() {
 
   function verifyAnswer(answer: number) {
     if (answer === tabuada[questionNumber].result) {
-      setLastQuestion(tabuada[questionNumber]);
+      const _lastQuestion:ItemTabuada = { 
+        value1: tabuada[questionNumber].value1,
+        value2: tabuada[questionNumber].value2,
+        result: tabuada[questionNumber].result,
+      };
+      // setLastQuestion(tabuada[questionNumber]);
+      setLastQuestion(_lastQuestion);
+
       //setTabuada(tabuada.splice(questionNumber, 1));
       //console.log(tabuada);
       setQuestionNumber(Math.floor(Math.random() * tabuada.length + 1))

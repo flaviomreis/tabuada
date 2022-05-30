@@ -23,8 +23,10 @@ export function NumberPad( { verifyAnswer }: NumberPadProps) {
   }
 
   function onSendAnswer() {
-    verifyAnswer(parseInt(result));
-    setResult('');
+    if (result.length > 0) {
+      verifyAnswer(parseInt(result));
+      setResult('');
+    }
   }
 
   return (
