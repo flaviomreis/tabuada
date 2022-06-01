@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { NumberPad } from "./components/NumberPad";
-import { Question } from "./components/Question";
-import { Title } from "./components/Title";
+import { useState } from 'react';
+import { NumberPad } from './components/NumberPad';
+import { Question } from './components/Question';
+import { Title } from './components/Title';
 
 export interface ItemTabuada {
   value1: number;
@@ -18,32 +18,27 @@ export function App() {
     }
   }
 
-  const [tabuada, setTabuada] = useState(itensTabuada);
-  const [questionNumber, setQuestionNumber] = useState(Math.floor(Math.random() * tabuada.length + 1));
-  const [lastQuestion, setLastQuestion] = useState<ItemTabuada | null>(null);
+  const [questionNumber, setQuestionNumber] = useState(
+    Math.floor(Math.random() * itensTabuada.length + 1)
+  );
+  const [questions, setQuestions] = useState<ItemTabuada[]>(itensTabuada);
 
   function verifyAnswer(answer: number) {
-    if (answer === tabuada[questionNumber].result) {
-      const _lastQuestion:ItemTabuada = { 
-        value1: tabuada[questionNumber].value1,
-        value2: tabuada[questionNumber].value2,
-        result: tabuada[questionNumber].result,
-      };
-      // setLastQuestion(tabuada[questionNumber]);
-      setLastQuestion(_lastQuestion);
+    if (questions[questionNumber] === undefined || answer === questions[questionNumber].result) {
+      questions.splice(questionNumber, 1)
+      setQuestions(questions);
 
-      //setTabuada(tabuada.splice(questionNumber, 1));
-      //console.log(tabuada);
-      setQuestionNumber(Math.floor(Math.random() * tabuada.length + 1))
+      const random = Math.floor(Math.random() * questions.length + 1);
+      setQuestionNumber(random);
+      console.log(questions.length);
     }
   }
 
   return (
     <div className="flex flex-col items-center">
       <Title />
-      <Question question={tabuada[questionNumber]} mainQuestion={true}/>
-      <NumberPad verifyAnswer={verifyAnswer}/>
-      { lastQuestion !== null && <Question question={lastQuestion}  mainQuestion={false}/> }
+      <Question question={questions[questionNumber]} />
+      <NumberPad verifyAnswer={verifyAnswer} />
     </div>
   );
 }
