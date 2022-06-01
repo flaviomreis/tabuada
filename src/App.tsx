@@ -33,12 +33,12 @@ export function App() {
 
   function verifyAnswer(answer: number) {
     if (answer === questions[questionNumber].result) {
-      //questions.splice(questionNumber, 1);
-      //setQuestions(questions);
+      questions.splice(questionNumber, 1);
+      setQuestions(questions);
 
-      const random = Math.floor(Math.random() * questions.length + 1);
+      const random = Math.floor(Math.random() * questions.length);
+      console.log(random);
       setQuestionNumber(random);
-      console.log(questions.length);
       setQuestionFlag(QuestionFlag.Waiting);
       setWrongsCount(0);
       setHits(hits + 1);
