@@ -32,7 +32,7 @@ export function NumberPad( { verifyAnswer }: NumberPadProps) {
   return (
     <div className="bg-zinc-300 w-60">
       <div className=" flex justify-end p-2 bg-zinc-800 text-white">
-          <span className="text-3xl">{ result === '' ? '??' : result }</span>
+          <span className="text-3xl">{result}{'_'}</span>
       </div>
 
       <div className="flex p-2">
@@ -46,7 +46,7 @@ export function NumberPad( { verifyAnswer }: NumberPadProps) {
           9
         </button>
       </div>
-      <div className="flex w-60 p-2">
+      <div className="flex p-2">
         <button  onClick={() => addResultNumber('4')} className="bg-sky-800 text-white h-10 rounded-full hover:bg-sky-900 transition-colors w-1/3">
           4
         </button>
@@ -57,7 +57,7 @@ export function NumberPad( { verifyAnswer }: NumberPadProps) {
           6
         </button>
       </div>
-      <div className="flex w-60 p-2">
+      <div className="flex p-2">
         <button  onClick={() => addResultNumber('1')} className="bg-sky-800 text-white h-10 rounded-full hover:bg-sky-900 transition-colors w-1/3">
           1
         </button>
@@ -68,7 +68,7 @@ export function NumberPad( { verifyAnswer }: NumberPadProps) {
           3
         </button>
       </div>
-      <div className="flex w-60 p-2">
+      <div className="flex p-2">
         <button  onClick={() => addResultNumber('0')} className="bg-sky-800 text-white h-10 rounded-full hover:bg-sky-900 transition-colors w-1/3">
           0
         </button>
