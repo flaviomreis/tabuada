@@ -1,18 +1,17 @@
-import { CheckCircle, CircleDashed, ClockClockwise } from 'phosphor-react';
-import { ItemTabuada } from '../App';
+import { CheckCircle, CircleDashed, CircleWavyQuestion, ClockClockwise, EyeClosed, HeartBreak, SmileyNervous, SmileySad } from 'phosphor-react';
+import { ItemTabuada, QuestionFlag } from '../App';
 
 interface QuestionPropos {
-  question: ItemTabuada,
+  question: ItemTabuada
+  flag: QuestionFlag
+  wrongsCount: number
 }
 
 export function Question({
   question,
+  flag,
+  wrongsCount
 }: QuestionPropos) {
-  if (question === undefined) {
-    question = { value1: 1, value2: 1, result: 1};
-  }
-
-  console.log(question);
 
   return (
     <div className="flex h-10 gap-6 justify-center items-center my-4">
@@ -21,7 +20,14 @@ export function Question({
       <div className="text-black text-4xl">{question.value2}</div>
       <div className="text-blue-600">=</div>
       <div className="text-black text-4xl">
-        <ClockClockwise className="text-4xl text-pink-800" />
+        { flag === QuestionFlag.Waiting ?
+            <CircleWavyQuestion className="text-4xl text-black" />
+          :
+            wrongsCount <= 2 ?
+            <SmileySad className="text-4xl text-red-600" />
+            :
+            <SmileyNervous weight='fill' className="text-4xl text-red-600" />
+        }
       </div>
     </div>
   );
